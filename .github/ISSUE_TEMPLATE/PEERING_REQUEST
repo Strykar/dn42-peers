@@ -1,0 +1,156 @@
+name: Peering Request
+description: Submit a Peering Request
+title: "[Peering Request] - "
+
+body:
+  # Peering Location
+  - type: dropdown
+    id: peering_location
+    attributes:
+      label: Peering Location
+      description: What location would you like to peer at?
+      options:
+        - Amsterdam, NL (AMS1)
+        - Ashburn, VA, USA (IAD1)
+        - Atlanta, GA, USA (ATL1)
+        - Chennai, IN (MAA1)
+        - Chicago, IL, (CHI1)
+        - Dallas, TX, USA (DAL1)
+        - Frankfurt, DE (FRA1)
+        - Fremont, CA, USA (FNC1)
+        - Jakarta, IN (CGK1)
+        - Los Angeles, CA, USA (LAX1)
+        - London, UK (LON1)
+        - Miami, FL, USA (MIA1)
+        - Milan, IT (MIL1)
+        - Mumbai, IN (MUM1)
+        - Newark, NJ, USA (EWR1)
+        - Osaka, JP (OSA1)
+        - Paris, FR (PAR1)
+        - Sao Paulo, BR (GRU1)
+        - Seattle, WA, USA (SEA1)
+        - Singapore, SG (SIN1)
+        - Stockholm, SE (STO1)
+        - Sydney, AU (SYD1)
+        - Toronto, CA (TOR1)
+        - Tokyo, JP (TYO1)
+    validations:
+      required: true
+
+  # ASN
+  - type: input
+    id: asn
+    attributes:
+      label: DN42 Autonomous System Number (ASN)
+    validations:
+      required: true
+
+  # Wireguard Endpoint
+  - type: input
+    id: wireguard_endpoint
+    attributes:
+      label: WireGuard Endpoint (IP or FQDN)
+    validations:
+      required: true
+
+  # Wireguard Listen Port
+  - type: input
+    id: wireguard_listen_port
+    attributes:
+      label: WireGuard Listen Port
+    validations:
+      required: true
+
+   # Wireguard Public Key
+  - type: input
+    id: wireguard_public_key
+    attributes:
+      label: WireGuard Public Key
+    validations:
+      required: true
+
+  # Peering Type
+  - type: dropdown
+    id: peering_type
+    attributes:
+      label: Peering Type
+      options:
+       - Multi-protocol (IPv4 and IPv6) with Extended Nexthop capability
+       - Multi-protocol (IPv4 and IPv6)
+       - IPv4 Only
+       - IPv6 Only
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Navigate to the section for selected peering type
+        * [Multi-protocol (IPv4 and IPv6) with Extended Nexthop capability](#mp_extnh)
+        * [Multi-protocol (IPv4 and IPv6)](#mp)
+        * [IPv4 Only](#v4_only)
+        * [IPv6 Only](#v6_only)
+
+  # MP w/ Extended NH
+  - type: markdown
+    id: mp_extnh
+    attributes:
+      value: |
+        ###  Multi-protocol (IPv4 and IPv6) with Extended Nexthop capability
+
+  - type: input
+    id: tunnel_ipv6_address_mp_extnh
+    attributes:
+      label: Your tunnel's IPv6 address
+      description: Link-local preferred, i.e. fe80::123/64
+
+  # MP
+  - type: markdown
+    id: mp
+    attributes:
+      value: |
+        ###  Multi-protocol (IPv4 and IPv6)
+
+  - type: input
+    id: tunnel_ipv4_address_mp
+    attributes:
+      label: Your tunnel's IPv4 address
+  
+  - type: input
+    id: tunnel_ipv6_address_mp
+    attributes:
+      label: Your tunnel's IPv6 address
+      description: Link-local preferred, i.e. fe80::123/64
+
+  # IPv4 Only
+  - type: markdown
+    id: v4_only
+    attributes:
+      value: |
+        ###  IPv4 Only
+
+  - type: input
+    id: tunnel_ipv4_address_v4_only
+    attributes:
+      label: Your tunnel's IPv4 address
+  
+  # IPv6 Only
+  - type: markdown
+    id: v6_only
+    attributes:
+      value: |
+        ###  IPv6 Only
+
+  - type: input
+    id: tunnel_ipv6_address_v6_only
+    attributes:
+      label: Your tunnel's IPv6 address
+      description: Link-local preferred, i.e. fe80::123/64
+
+  # Footer
+  - type: markdown
+    attributes:
+      value: |
+        You can find our node information [here](https://dn42.routedbits.com/nodes/)
+
+        Follow up will take place within the issue created
